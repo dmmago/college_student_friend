@@ -1,0 +1,32 @@
+<section class="inner">
+  <h2 class="titel">ユーザーページ</h2>
+  <h3>
+    登録情報
+  </h3>
+  <%= image_tag @customer.get_profile_image(100,100) %>
+  <table>
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @customer.last_name_kana %></td>
+        <td><%= @customer.first_name_kana %></td>
+      </tr>
+      <tr>
+        <td><%= @customer.last_name %></td>
+        <td><%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <td><%= @customer.faculty %></td>
+        <td><%= @customer.school_year %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= @customer.introduction %>
+  
+    <%= link_to edit_customer_path(current_customer.id) do %>
+    編集する
+    <% end %>
+  
+</section>
+
