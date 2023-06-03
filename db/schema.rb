@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_03_042123) do
+ActiveRecord::Schema.define(version: 2023_06_02_100627) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -87,20 +87,8 @@ ActiveRecord::Schema.define(version: 2023_06_03_042123) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "friend_requests", force: :cascade do |t|
-    t.integer "to_customer_id", null: false
-    t.integer "from_customer_id", null: false
-    t.integer "status", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["from_customer_id"], name: "index_friend_requests_on_from_customer_id"
-    t.index ["to_customer_id"], name: "index_friend_requests_on_to_customer_id"
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chat_rooms", "chats"
   add_foreign_key "chat_rooms", "customers"
-  add_foreign_key "friend_requests", "customers", column: "from_customer_id"
-  add_foreign_key "friend_requests", "customers", column: "to_customer_id"
 end
