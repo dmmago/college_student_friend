@@ -18,6 +18,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def index
+    @customers = Customer.page(params[:page])
   end
 
 

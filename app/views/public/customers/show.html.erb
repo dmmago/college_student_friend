@@ -23,10 +23,10 @@
     </tbody>
   </table>
   <%= @customer.introduction %>
-  
-    <%= link_to edit_customer_path(current_customer.id) do %>
-    編集する
-    <% end %>
-  
+    <%= link_to "編集する", edit_customer_path(current_customer.id)  %>
+    <%= link_to "フレンド申請", friend_requests_path({customer_id:@customer.id,reaction: "approve"}), method: :post %>
+
+
+
 </section>
 

@@ -1,2 +1,18 @@
-<h1>Public::Customers#index</h1>
-<p>Find me in app/views/public/customers/index.html.erb</p>
+<table class="customers_index">
+  <thead>
+    <th>会員ID</th>
+    <th>フリガナ</th>
+    <th>名前</th>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.id %></td>
+      <td><%= customer.full_name %></td>
+      <td><%= customer.full_name_kana %></td>
+      <td><%= link_to "詳細", customer_path(customer) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
