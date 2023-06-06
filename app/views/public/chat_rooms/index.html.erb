@@ -1,0 +1,10 @@
+
+<div class="main">
+  
+  <table>
+    <% @friend_customers.each do |friend_customer| %>
+      <td><%= link_to friend_customer.full_name, "#" %></td>
+    <% end %>
+  </table>
+  
+</div>
