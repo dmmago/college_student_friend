@@ -17,6 +17,7 @@ scope module: :public do
   resources :friend_requests, only: [:create]
   
   resources :chat_rooms, only: [:index]
+  resources :chats, only: [:show, :create]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
