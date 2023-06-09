@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
   has_many :chat_rooms
   has_many :chats, through: :chat_room
   has_many :friend_requests
+  has_many :chat_messages
   
   def get_profile_image(width,height)
     unless profile_image.attached? 

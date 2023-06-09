@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_03_042123) do
+ActiveRecord::Schema.define(version: 2023_06_09_050634) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 2023_06_03_042123) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.integer "chat_id", null: false
+    t.integer "customer_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chat_id"], name: "index_chat_messages_on_chat_id"
+    t.index ["customer_id"], name: "index_chat_messages_on_customer_id"
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -99,6 +109,7 @@ ActiveRecord::Schema.define(version: 2023_06_03_042123) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chat_messages", "chats"
   add_foreign_key "chat_rooms", "chats"
   add_foreign_key "chat_rooms", "customers"
   add_foreign_key "friend_requests", "customers", column: "from_customer_id"
