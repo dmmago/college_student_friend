@@ -5,6 +5,7 @@
     <% @friend_customers.each do |customer| %>
       <td><%= customer.full_name %></td>
       <td><%= link_to "a", chats_path(params: {customer_id: customer.id}), method: :post %></td>
+      
     <% end %>
 
   </table>
