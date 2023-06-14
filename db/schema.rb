@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_09_050634) do
+ActiveRecord::Schema.define(version: 2023_06_14_060330) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 2023_06_09_050634) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "arrangements", force: :cascade do |t|
+    t.string "layout", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "chat_messages", force: :cascade do |t|
@@ -105,6 +111,14 @@ ActiveRecord::Schema.define(version: 2023_06_09_050634) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["from_customer_id"], name: "index_friend_requests_on_from_customer_id"
     t.index ["to_customer_id"], name: "index_friend_requests_on_to_customer_id"
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.integer "customer_id"
+    t.boolean "states", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_seats_on_customer_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
