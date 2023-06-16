@@ -1,0 +1,15 @@
+<h1>座席登録</h1>
+<%= form_with model: @lecture do |f| %>
+<div class="lecture_field">
+<%= f.text_field :lecture_name %>
+</div>
+<div class="seat_field">
+行
+<%= f.select :row, *[1..10] %>
+列
+<%= f.select :col, *[1..10] %>
+</div>
+<%= f.submit "作成" %>
+<% end %>
+
+<p></p>

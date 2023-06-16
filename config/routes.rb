@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+
   namespace :admin do
     get 'homes/top'
   end
@@ -21,6 +22,11 @@ scope module: :public do
   
   resources :chat_rooms, only: [:index]
   resources :chats, only: [:show, :create]
+end
+scope module: :admin do
+  resources :lectures, only: [:index, :create, :show, :destroy, :new] do
+    resource :seats, only: [:create]
+  end
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_14_172343) do
+ActiveRecord::Schema.define(version: 2023_06_16_085915) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -108,10 +108,11 @@ ActiveRecord::Schema.define(version: 2023_06_14_172343) do
   end
 
   create_table "lectures", force: :cascade do |t|
-    t.integer "seating_capacity", null: false
     t.integer "row", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "lecture_name", null: false
+    t.integer "col", null: false
   end
 
   create_table "seats", force: :cascade do |t|
