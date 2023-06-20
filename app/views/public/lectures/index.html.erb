@@ -1,0 +1,4 @@
+<h1>教室一覧</h1>
+<% @lectures.each do |lecture| %>
+<%= link_to lecture.lecture_name, lecture_path(lecture.id) %>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>Public::Lectures#show</h1>
+<% @seats.each do |seat| %>
+  <%= link_to seat.id, lectures_path(seat_id: seat.id), method: :post %>
+  
+  <%= seat.customer_id %>
+<% end %>
+
+
+
+

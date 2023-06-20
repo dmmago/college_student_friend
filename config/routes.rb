@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
 
 
-
   namespace :admin do
     get 'homes/top'
   end
@@ -17,15 +16,18 @@ scope module: :public do
   root to: 'homes#top'
 
   resources :customers, only: [:index, :create, :show, :edit, :update, :destroy]
-  
+
   resources :friend_requests, only: [:create]
-  
+
   resources :chat_rooms, only: [:index]
   resources :chats, only: [:show, :create]
+  resources :lectures, only: [:index, :show, :create]  do
+    resource :seats, only: [:index, :create, :update]
+  end
 end
-scope module: :admin do
-  resources :lectures, only: [:index, :create, :show, :destroy, :new] do
-    resource :seats, only: [:create, :new]
+  namespace :admin do
+    resources :lectures, only: [:index, :create, :show, :destroy, :new] do
+      resource :seats, only: [:create, :new]
   end
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
