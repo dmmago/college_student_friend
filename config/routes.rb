@@ -21,7 +21,7 @@ scope module: :public do
 
   resources :chat_rooms, only: [:index]
   resources :chats, only: [:show, :create]
-  resources :lectures, only: [:index, :show, :create]  do
+  resources :lectures, only: [:index, :show, :create, :update]  do
     resource :seats, only: [:index, :create, :update]
   end
 end

@@ -1,9 +1,25 @@
 <h1>Public::Lectures#show</h1>
-<% @seats.each do |seat| %>
-  <%= link_to seat.id, lectures_path(seat_id: seat.id), method: :post %>
+<section class="py-5">
+  <div class="row  justify-content-center">
+    <% @seats.each_slice(@lecture_row) do |seat_rows| %>
+    <div>
+    <% seat_rows.each do |seat| %>
+      <div class="seat">
+      <% if seat.customer_id == nil %>
+        <%= link_to seat.id, lectures_path(seat_id: seat.id), method: :post %>
+      <% else %>
+        <%= link_to seat.customer.full_name, customer_path(seat.customer_id) %>
+      <% end %>
+      </div>
   
-  <%= seat.customer_id %>
-<% end %>
+      <% if seat.customer_id == current_customer.id %>
+        <%= link_to "削除", lecture_path(seat_id: seat.id), method: :patch %>
+      <% end %>
+    <% end %>
+    </div>
+    <% end %>
+  </div>
+</section>
 
 
 
