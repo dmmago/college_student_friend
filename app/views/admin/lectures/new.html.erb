@@ -1,15 +1,35 @@
-<h1>座席登録</h1>
-<%= form_with model: @lecture, url: admin_lectures_path, method: :post do |f| %>
-<div class="lecture_field">
-<%= f.text_field :lecture_name %>
-</div>
-<div class="seat_field">
-縦
-<%= f.select :row, *[1..10] %>
-横
-<%= f.select :col, *[1..10] %>
-<%= f.submit "作成" %>
-<% end %>
-</div>
+
+<section class="inner">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12 text-center">
+        <h2 class="mb-0">教室作成</h2>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12 mx-auto">
+        <div class="lecture_field">
+          <%= form_with model: @lecture, url: admin_lectures_path, method: :post do |f| %>
+            <%= f.label :lectrue_name, "講義名入力" %>
+            <%= f.text_field :lecture_name %>
+        </div>
+        <div class="seat_field">
+        <%= f.label :row, "縦" %>
+        <%= f.select :row, *[1..10] %>
+        <p>×</p>
+        <%= f.label :col, "横" %>
+        <%= f.select :col, *[1..10] %>
+        </div>
+        <div class="field">
+        <%= f.submit "作成", class: "btn btn-primary" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
