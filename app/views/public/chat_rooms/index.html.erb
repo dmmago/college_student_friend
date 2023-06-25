@@ -1,14 +1,18 @@
-
-<div class="main">
-
-  <table>
+<div class="container text-center">
+  <div class="py-5 px-4 px-md-5">
+    <h2 class="fw-bolder mb-5">チャットルーム</h2>
     <% @friend_customers.each do |customer| %>
-      <td><%= customer.full_name %></td>
-      <td><%= link_to "a", chats_path(params: {customer_id: customer.id}), method: :post %></td>
-      
+    <div class="row justify-content-center">
+      <div class="col-md-2">
+      <%= customer.full_name %>
+      </div>
+      <div class="col-md-2">
+      <%= image_tag customer.get_profile_image(50,50) %>
+      </div>
+      <div class="col-md-2">
+      <%= link_to "トークルームへ", chats_path(params: {customer_id: customer.id}), method: :post %>
+      </div>
+    </div>
     <% end %>
-
-  </table>
-
-
+  </div>
 </div>

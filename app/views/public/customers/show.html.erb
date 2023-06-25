@@ -18,18 +18,15 @@
         <p class="introduction">
           <%= @customer.introduction %>
         </p>
-    <% if current_customer.id == @customer.id %>
-    <%= link_to "編集する", edit_customer_path(current_customer.id)  %>
-    <% else %>
-    <%= link_to "フレンド申請", friend_requests_path({customer_id:@customer.id,reaction: "approve"}), method: :post %>
-    <% end %>
+        <div class="link">
+          <% if current_customer.id == @customer.id %>
+          <%= link_to "編集する", edit_customer_path(current_customer.id), class: "btn btn-primary mx-2"  %>
+          <% else %>
+          <%= link_to "フレンド申請", friend_requests_path({customer_id:@customer.id,reaction: "approve"}), method: :post, class: "btn btn-primary mx-2" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-
-
-
-
-
 </section>
 

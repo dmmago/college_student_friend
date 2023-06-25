@@ -1,41 +1,51 @@
-<section class="inner">
-  <h2 class="titel">会員情報編集</h2>
-  <%= form_with model: @customer do |f| %>
-  
-  <table class="customer_info">
-    <thead>
-      <th></th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>フリガナ</td>
-        <td><%= f.label :last_name_kana, "(セイ)" %><%= f.text_field :last_name_kana, :placeholder =>"#{@customer.last_name_kana}" %></td>
-        <td><%= f.label :first_name_kana, "(メイ)" %><%= f.text_field :first_name_kana, :placeholder =>"#{@customer.first_name_kana}" %></td>
-      </tr>
-      <tr>
-        <td>名前</td>
-        <td><%= f.label :last_name, "(姓)" %> <%= f.text_field :last_name, :placeholder =>"#{@customer.last_name}" %></td>
-        <td><%= f.label :first_name_kana, "(メイ)" %><%= f.text_field :first_name, :placeholder =>"#{@customer.first_name}" %></td>
-      </tr>
-      <tr>
-        <td><%= f.label :email, "メールアドレス" %> <%= f.email_field :email, :placeholder =>"#{@customer.email}" %></td>
-      </tr>
-      <tr>
-        <td><%= f.label :faculty, "学部" %> <%= f.text_field :faculty, :placeholder =>"#{@customer.faculty}" %></td>
-        <td><%= f.label :school_year, "学年" %> <%= f.text_field :school_year, :placeholder =>"#{@customer.school_year}" %></td>
-      </tr>
-      <tr>
-        <td><%= f.label :introduction, "紹介文" %> <%= f.text_field :introduction, :placeholder =>"#{@customer.introduction}" %></td>
-      </tr>
-      <tr>
-        <td><%= f.file_field :profile_image, placeholder:"プロフィール画像", accept:"image/*" %></td>
-      </tr>
-      <tr>
-        <td><%= f.submit "変更を保存" %></td>
-      </tr>
-    </tbody>
-  </table>
-   <% end %>
 
-  
-</section>
+<div class="container text-center">
+  <div class="bg-light py-5 px-4 px-md-5">
+    <%= form_with model: @customer do |f| %>
+    <h1 class="mb-5">
+      マイページ編集
+    </h1>
+    <div class="row">
+      <div class="form-group col-md-6">
+          <%= f.label :last_name, "(性)" %> <%= f.text_field :last_name, autofocus: true, :placeholder =>"#{@customer.last_name}", class: "form-control" %>
+      </div>
+      <div class="form-group col-md-6">
+          <%= f.label :first_name, "(名)" %> <%= f.text_field :first_name, autofocus: true, :placeholder =>"#{@customer.first_name}", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= f.label :last_name_kana, "(セイ)" %> <%= f.text_field :last_name_kana, autofocus: true, :placeholder =>"#{@customer.last_name_kana}", class: "form-control" %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.label :first_name_kana, "(ナマエ)" %> <%= f.text_field :first_name_kana, autofocus: true, :placeholder =>"#{@customer.first_name_kana}", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :school_year, "学年" %>
+      <%= f.text_field :school_year, :placeholder =>"#{@customer.school_year}", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :faculty, "学部" %>
+      <%= f.text_field :faculty, :placeholder =>"#{@customer.faculty}", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :introduction, "紹介文" %>
+      <%= f.text_area :introduction, :placeholder =>"#{@customer.introduction}", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <div>
+      <%= f.label :profile_image, "プロフィール画像" %>
+      </div>
+      <%= f.file_field :profile_image, :placeholder =>"プロフィール画像", accept:"image/*" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "変更を保存", class: "btn btn-success" %>
+    </div>
+    <% end %>
+  </div>
+</div>

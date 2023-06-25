@@ -10,6 +10,8 @@ class Customer < ApplicationRecord
   has_many :friend_requests
   has_many :chat_messages
   has_many :seats
+  
+    
 
   validates :email, presence: true
   validates :encrypted_password, presence: true

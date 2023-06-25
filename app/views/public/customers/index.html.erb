@@ -1,18 +1,22 @@
-<table class="customers_index">
-  <thead>
-    <th>会員ID</th>
-    <th>フリガナ</th>
-    <th>名前</th>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-    <tr>
-      <td><%= customer.id %></td>
-      <td><%= customer.full_name %></td>
-      <td><%= customer.full_name_kana %></td>
-      <td><%= link_to "詳細", customer_path(customer) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="container text-center">
+  <div class="py-5 px-4 px-md-5">
+    <table class="table ">
+      <thead>
+        <th>名前</th>
+        <th>学部</th>
+        <th>学年</th>
+        <th></th>
+      </thead>
+      <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.full_name %></td>
+          <td><%= customer.faculty %></td>
+          <td><%= customer.school_year %></td>
+          <td><%= link_to "詳細", customer_path(customer) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
