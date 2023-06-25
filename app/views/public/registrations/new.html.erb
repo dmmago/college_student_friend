@@ -1,58 +1,59 @@
 
-
-<%= form_with model: @customer, url: customer_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  
-<div class="title">
-  <h1 class="text-white text-center">
-    アカウントを作成する
-  </h1>
+<div class="container text-center">
+  <div class="bg-light py-5 px-4 px-md-5">
+    <%= form_with model: @customer, url: customer_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    <h1 class="mb-5">
+      アカウントを作成する
+    </h1>
+    <div class="row">
+      <div class="form-group col-md-6">
+          <%= f.label :last_name, "(性)" %> <%= f.text_field :last_name, autofocus: true, :placeholder =>"名字", class: "form-control" %>
+      </div>
+      <div class="form-group col-md-6">
+          <%= f.label :first_name, "(名)" %> <%= f.text_field :first_name, autofocus: true, :placeholder =>"名前", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= f.label :last_name_kana, "(セイ)" %> <%= f.text_field :last_name_kana, autofocus: true, :placeholder =>"ミョウジ", class: "form-control" %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.label :first_name_kana, "(ナマエ)" %> <%= f.text_field :first_name_kana, autofocus: true, :placeholder =>"ナマエ", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :school_year, "学年" %>
+      <%= f.text_field :school_year, :placeholder =>"1年", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :faculty, "学部" %>
+      <%= f.text_field :faculty, :placeholder =>"社会学部", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :introduction, "紹介文" %>
+      <%= f.text_area :introduction, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, "パスワード(確認用)" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    </div>
+  </div>
 </div>
-<table class="customer_info">
-  <thead>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= f.label :last_name, "(性)", class: "customer_name" %> <%= f.text_field :last_name, autofocus: true, :placeholder =>"名字" %></td>
-      <td><%= f.label :first_name, "(名)", class: "customer_name" %> <%= f.text_field :first_name, autofocus: true, :placeholder =>"名前" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :last_name_kana, "(セイ)" %> <%= f.text_field :last_name_kana, autofocus: true, :placeholder =>"ミョウジ" %></td>
-      <td><%= f.label :first_name_kana, "(ナマエ)" %> <%= f.text_field :first_name_kana, autofocus: true, :placeholder =>"ナマエ" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :email, "メールアドレス" %></td>
-      <td colspan="2"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :school_year, "学年" %></td>
-      <td colspan="2"><%= f.text_field :school_year, :placeholder =>"1年" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :faculty, "学部" %></td>
-      <td colspan="2"><%= f.text_field :faculty, :placeholder =>"社会学部" %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :introduction, "紹介文" %></td>
-      <td colspan="2"><%= f.text_field :introduction %></td>
-    </tr>
-    <tr>
-      <td colspan="2"><%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %></td>
-      <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-    </tr>
-    <tr>
-      <td colspan="2"><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
-      <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td colspan="2"><%= f.submit "新規登録", class: "btn btn-success" %></td>
-    </tr>
-  </tbody>
-</table>
 <% end %>
 
 
 
 
-<%= render "public/shared/links" %>
+
