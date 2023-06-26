@@ -5,6 +5,7 @@ class CreateSeats < ActiveRecord::Migration[6.1]
       t.references :lecture, null: false, foreign_key: true
 
       t.timestamps
+      t.index [:customer_id, :lecture_id], unique: true
     end
   end
 end

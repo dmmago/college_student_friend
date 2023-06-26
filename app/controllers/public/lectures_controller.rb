@@ -13,12 +13,21 @@ class Public::LecturesController < ApplicationController
   def create
     @seat = Seat.find(params[:seat_id])
     @seat.customer_id = current_customer.id
-    @seat.save
+    if @seat.save
+      flash[:notice] = 'success'
+      redirect_back(fallback_location: root_url)
+    else
+      flash[:alert] = 'failed'
+      redirect_back(fallback_location: root_url)
+    end
   end
   
   def update
     @seat = Seat.find(params[:seat_id])
     
-    @seat.update(customer_id:nil)
+    @seat.customer_id = nil
+    @seat.save!(validate: false)
+    flash[:notice] = 'success'
+    redirect_back(fallback_location: root_url)
   end
 end

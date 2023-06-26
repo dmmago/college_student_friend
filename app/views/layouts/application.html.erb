@@ -16,6 +16,8 @@
         <ul class="flex">
           <% if admin_signed_in? %>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+          <li><%= link_to "教室作成", new_admin_lecture_path %></li>
+          <li><%= link_to "教室一覧", admin_lectures_path %></li>
           <% elsif customer_signed_in? %>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
           <li><%= link_to "マイページ", customer_path(current_customer.id) %></li>
@@ -30,7 +32,13 @@
         </ul>
       </div>
     </header>
-    <%= yield %>
+    <main>
+      <div class="container">
+        <%= notice %>
+        <%= alert %>
+      </div>
+      <%= yield %>
+    </main>
     <footer>Copyright © Infratop Inc. All Rights Reserved.</footer>
   </body>
 </html>

@@ -2,7 +2,7 @@
 
 class Admin::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resourse)
-    admin_homes_top_path
+    new_admin_lecture_path
   end
   # before_action :configure_sign_in_params, only: [:create]
 

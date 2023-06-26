@@ -111,8 +111,8 @@ ActiveRecord::Schema.define(version: 2023_06_16_085915) do
     t.integer "row", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "lecture_name", null: false
-    t.integer "col", null: false
+    t.string "lecture_name"
+    t.integer "col", default: 1, null: false
   end
 
   create_table "seats", force: :cascade do |t|
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2023_06_16_085915) do
     t.integer "lecture_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id", "lecture_id"], name: "index_seats_on_customer_id_and_lecture_id", unique: true
     t.index ["customer_id"], name: "index_seats_on_customer_id"
     t.index ["lecture_id"], name: "index_seats_on_lecture_id"
   end

@@ -1,15 +1,13 @@
 class Admin::LecturesController < ApplicationController
+  before_action :authenticate_admin!
   def new
-
     @lecture = Lecture.new
     @seat = Seat.new
   end
 
 
-  def show
-  end
-
   def index
+    @lectures = Lecture.page(params[:page])
   end
 
   def create
@@ -18,9 +16,19 @@ class Admin::LecturesController < ApplicationController
     if @lecture.save
     @lecture.seating_capacity.times do
       Seat.create(lecture_id: @lecture.id)
+      end
+      flash[:notice] = "教室を作成しました"
+      redirect_to admin_lectures_path
+    else
+      render :new
     end
-    end
-
+  end
+  
+  def destroy
+    lecture = Lecture.find(params[:id])
+    lecture.destroy
+    flash[:notice] = "教室を削除しました"
+    redirect_to admin_lectures_path
   end
 
 

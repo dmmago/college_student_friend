@@ -1,2 +1,37 @@
-<h1>Admin::Lectures#index</h1>
-<p>Find me in app/views/admin/lectures/index.html.erb</p>
+<div class="container text-center">
+  <div class="py-4 px-4">
+    <div><%= flash[:notice] %></div>
+    <table class="table">
+      <div class="row">
+      <thead>
+        <tr>
+          <th>教室名</th>
+          <th>座席数</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @lectures.each do |lecture| %>
+      <tbody>
+        <tr>
+          <td><%= lecture.lecture_name %></td>
+          <td>
+            <div class="seat_table">
+              縦
+              <%= lecture.row %>
+              横
+              <%= lecture.col %>
+            </div>
+          </td>
+          <td>
+            <%= link_to "削除", admin_lecture_path(lecture), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    <div>
+    <%= paginate @lectures %>
+    </div>
+    </div>
+  </div>
+</div>

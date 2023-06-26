@@ -26,7 +26,7 @@ scope module: :public do
   end
 end
   namespace :admin do
-    resources :lectures, only: [:index, :create, :show, :destroy, :new] do
+    resources :lectures, only: [:index, :create, :destroy, :new] do
       resource :seats, only: [:create, :new]
   end
 end
