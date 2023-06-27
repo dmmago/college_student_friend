@@ -1,20 +1,24 @@
-<h1>Public::Lectures#show</h1>
-<section class="py-5">
+<div class="container text-center">
+  <div class="py-5 px-4 px-md-5">
+    <h2 class="fw-bolder mb-5">
+      <%= @lecture.lecture_name %>教室
+    </h2>
   <div class="row  justify-content-center">
     <% @seats.each_slice(@lecture_row) do |seat_rows| %>
     <div>
     <% seat_rows.each do |seat| %>
       <div class="seat">
       <% if seat.customer_id == nil %>
-        <%= link_to seat.id, lectures_path(seat_id: seat.id), method: :post %>
+        <%= link_to "座席登録", lectures_path(seat_id: seat.id), method: :post %>
+      <% elsif seat.customer_id == current_customer.id%>
+        <%= current_customer.full_name %>
+        <%= link_to "削除", lecture_path(seat_id: seat.id), method: :patch %>
       <% else %>
         <%= link_to seat.customer.full_name, customer_path(seat.customer_id) %>
       <% end %>
       </div>
   
-      <% if seat.customer_id == current_customer.id %>
-        <%= link_to "削除", lecture_path(seat_id: seat.id), method: :patch %>
-      <% end %>
+      
     <% end %>
     </div>
     <% end %>

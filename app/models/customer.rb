@@ -7,11 +7,12 @@ class Customer < ApplicationRecord
   has_one_attached :profile_image
   has_many :chat_rooms
   has_many :chats, through: :chat_room
-  has_many :friend_requests
   has_many :chat_messages
   has_many :seats
-  
-    
+  has_many :active_friend_request, class_name: "FriendRequest", foreign_key: "from_customer_id", dependent: :destroy
+  has_many :passive_friend_request, class_name: "FriendRequest", foreign_key: "to_customer_id", dependent: :destroy
+  has_many :requesting_customer, through: :active_friend_request, source: :from_customer
+  has_many :requested_customer, through: :passive_friend_request, source: :to_customer
 
   validates :email, presence: true
   validates :encrypted_password, presence: true
@@ -38,4 +39,15 @@ class Customer < ApplicationRecord
   def full_name_kana
     last_name_kana + " " + first_name_kana
   end
+
+  def requesting_customer?(customer)
+    if !self.active_friend_request || !self.active_friend_request.find_by(to_customer_id: customer.id)
+      return false
+    end
+    self.active_friend_request.find_by(to_customer_id: customer.id).approve?
+    
+  end
+
+
+
 end

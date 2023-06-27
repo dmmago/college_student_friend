@@ -14,6 +14,7 @@
         <p class="school_year">
           <%= @customer.faculty %>
           <%= @customer.school_year %>
+          
         </p>
         <p class="introduction">
           <%= @customer.introduction %>
@@ -21,8 +22,13 @@
         <div class="link">
           <% if current_customer.id == @customer.id %>
           <%= link_to "編集する", edit_customer_path(current_customer.id), class: "btn btn-primary mx-2"  %>
-          <% else %>
-          <%= link_to "フレンド申請", friend_requests_path({customer_id:@customer.id,reaction: "approve"}), method: :post, class: "btn btn-primary mx-2" %>
+          <% end %>
+          <% if current_customer != @customer %>
+            <% if current_customer.requesting_customer?(@customer) %>
+            <%= link_to "申請取り消し", friend_requests_path({customer_id: @customer.id, reaction: "unaccept"}), method: :post, class: "btn btn-primary mx-2" %>
+            <% else %>
+            <%= link_to "フレンド申請", friend_requests_path({customer_id: @customer.id, reaction: "approve"}), method: :post, class: "btn btn-primary mx-2" %>
+            <% end %>
           <% end %>
         </div>
       </div>

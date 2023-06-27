@@ -14,20 +14,19 @@ class Public::LecturesController < ApplicationController
     @seat = Seat.find(params[:seat_id])
     @seat.customer_id = current_customer.id
     if @seat.save
-      flash[:notice] = 'success'
+      flash[:notice] = '座席を登録しました'
       redirect_back(fallback_location: root_url)
     else
-      flash[:alert] = 'failed'
+      flash[:alert] = 'すでに座席登録済みです'
       redirect_back(fallback_location: root_url)
     end
   end
   
   def update
     @seat = Seat.find(params[:seat_id])
-    
     @seat.customer_id = nil
     @seat.save!(validate: false)
-    flash[:notice] = 'success'
+    flash[:notice] = '座席情報を削除しました'
     redirect_back(fallback_location: root_url)
   end
 end

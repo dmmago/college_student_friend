@@ -1,3 +1,11 @@
 <div class="chat-message">
-  <p><%= chat_message.content %></p>
+  <% if chat_message.customer.id == current_customer.id %>
+    <div class="my_message">
+      <%= chat_message.content %>
+    </div>
+  <% else %>
+    <div class="your_message">
+      <%= chat_message.content %>
+    </div>
+  <% end %>
 </div>

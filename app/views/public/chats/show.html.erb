@@ -1,7 +1,13 @@
-トークルーム
-<div id='chat-messages'>
-  <%= render @chat_messages %>
+<div class="container text-center">
+  <div class="py-5 px-4">
+    <div class="chat_customer_name">
+      <%= @chat_room.full_name %>さんとのトークルーム
+    </div>
+    <div id='chat-messages'>
+      <%= render @chat_messages %>
+    </div>
+    <form>
+      <textarea data-behavior="chat_speaker" data-chat_id="<%= @chat.id %>" placeholdder="メッセージ" class="chat_message_form"></textarea>
+    </form>
+  </div>
 </div>
-<form>
-  <textarea data-behavior="chat_speaker" data-chat_id="<%= @chat.id %>" placeholdder="メッセージ" class="chat_message_form"></textarea>
-</form>
