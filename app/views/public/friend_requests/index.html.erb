@@ -1,0 +1,16 @@
+<div class="container text-center">
+    <h1 class="mb-5 pt-5">
+      フレンド申請
+    </h1>
+    <% @friend_requests.each do |friend_request| %>
+    <div class="friend_name">
+    <%= link_to friend_request.from_customer.full_name, customer_path(friend_request.from_customer.id) %>
+    </div>
+    <% end %>
+</div>
+
+
+
+
+
+

@@ -1,5 +1,9 @@
 class Public::FriendRequestsController < ApplicationController
   
+  def index
+    @friend_requests = FriendRequest.where(to_customer_id: current_customer.id, status: 'approve')#ログインユーザへの友達申請のid取得
+  end
+  
   def create
     friendrequest = current_customer.active_friend_request.find_by(to_customer_id: params[:customer_id])
     if !friendrequest

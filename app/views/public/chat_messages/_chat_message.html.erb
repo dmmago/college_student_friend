@@ -1,11 +1,14 @@
-<div class="chat-message">
-  <% if chat_message.customer.id == current_customer.id %>
-    <div class="my_message">
-      <%= chat_message.content %>
+
+  <div class="chat-message">
+    <% if chat_message.customer.id == current_customer.id %>
+    <div class="my_fukidashi">
+      <div class="my_message">
+        <%= chat_message.content %>
+      </div>
     </div>
-  <% else %>
-    <div class="your_message">
-      <%= chat_message.content %>
-    </div>
-  <% end %>
-</div>
+    <% else %>
+      <div class="your_message">
+        <%= chat_message.content %>
+      </div>
+    <% end %>
+  </div>

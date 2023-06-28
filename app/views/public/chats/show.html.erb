@@ -1,13 +1,16 @@
-<div class="container text-center">
-  <div class="py-5 px-4">
-    <div class="chat_customer_name">
-      <%= @chat_room.full_name %>さんとのトークルーム
-    </div>
-    <div id='chat-messages'>
-      <%= render @chat_messages %>
-    </div>
-    <form>
-      <textarea data-behavior="chat_speaker" data-chat_id="<%= @chat.id %>" placeholdder="メッセージ" class="chat_message_form"></textarea>
-    </form>
+<div class="continer py-5 px-5 align-items-center">
+  <div class="chat_room">
+  <div class="chat_customer_name text-center py-5">
+    <%= @chat_room.full_name %>さんとのトークルーム
+  </div>
+  <div id='chat-messages'>
+    <%= render @chat_messages %>
+  </div>
+  <div class="formd flex justify-content-center">
+  <form class="form d-flex justify-content-center">
+    <textarea data-behavior="chat_speaker" data-chat_id="<%= @chat.id %>" placeholdder="メッセージ" class="chat_message_form"></textarea>
+  </form>
+  </div>
   </div>
 </div>
+

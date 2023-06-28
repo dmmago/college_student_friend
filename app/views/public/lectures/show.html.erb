@@ -1,24 +1,22 @@
 <div class="container text-center">
-  <div class="py-5 px-4 px-md-5">
+  <div class="py-5">
     <h2 class="fw-bolder mb-5">
       <%= @lecture.lecture_name %>教室
     </h2>
-  <div class="row  justify-content-center">
+  <div class="row mx-0 px-0 justify-content-center">
     <% @seats.each_slice(@lecture_row) do |seat_rows| %>
     <div>
     <% seat_rows.each do |seat| %>
       <div class="seat">
       <% if seat.customer_id == nil %>
-        <%= link_to "座席登録", lectures_path(seat_id: seat.id), method: :post %>
+        <%= link_to "座席登録", lectures_path(seat_id: seat.id), method: :post, class: "small" %>
       <% elsif seat.customer_id == current_customer.id%>
-        <%= current_customer.full_name %>
-        <%= link_to "削除", lecture_path(seat_id: seat.id), method: :patch %>
+        <p class="small"><%= current_customer.full_name %></p>
+        <%= link_to "削除", lecture_path(seat_id: seat.id), method: :patch, class: "small"%>
       <% else %>
-        <%= link_to seat.customer.full_name, customer_path(seat.customer_id) %>
+        <%= link_to seat.customer.full_name, customer_path(seat.customer_id), class: "small" %>
       <% end %>
       </div>
-  
-      
     <% end %>
     </div>
     <% end %>

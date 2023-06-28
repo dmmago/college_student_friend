@@ -1,6 +1,7 @@
 // Place all the styles related to the public/chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
 .my_message {
   display: flex;
   justify-content: flex-end;
@@ -9,4 +10,10 @@
 .your_message {
   display: flex;
   justify-content: flex-start;;
+}
+
+.chat_room {
+  padding: 20px 10px;
+  max-width:  650px;
+  margin: 15px auto;
 }

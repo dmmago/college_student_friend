@@ -17,7 +17,7 @@ scope module: :public do
 
   resources :customers, only: [:index, :create, :show, :edit, :update, :destroy]
 
-  resources :friend_requests, only: [:create]
+  resources :friend_requests, only: [:create, :index]
 
   resources :chat_rooms, only: [:index]
   resources :chats, only: [:show, :create]

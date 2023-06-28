@@ -22,7 +22,12 @@ class Public::CustomersController < ApplicationController
     @customers = Customer.page(params[:page])
   end
   
-  
+   def destroy
+    customer = Customer.find(params[:id])
+    customer.destroy 
+    flash[:notice] = "退会しました"
+    redirect_to root_path 
+  end
 
 
 
