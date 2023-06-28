@@ -1,5 +1,5 @@
 class Public::FriendRequestsController < ApplicationController
-  
+  before_action :authenticate_customer!
   def index
     @friend_requests = FriendRequest.where(to_customer_id: current_customer.id, status: 'approve')#ログインユーザへの友達申請のid取得
   end

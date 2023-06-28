@@ -1,4 +1,5 @@
 class Public::LecturesController < ApplicationController
+  before_action :authenticate_customer!
   def show
     @lecture = Lecture.find(params[:id])
     @lecture_row = @lecture.row
