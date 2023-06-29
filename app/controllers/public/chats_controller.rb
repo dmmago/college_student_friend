@@ -1,5 +1,5 @@
 class Public::ChatsController < ApplicationController
-　before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def create
     current_customer_chats = ChatRoom.where(customer_id: current_customer.id).map(&:chat_id)
