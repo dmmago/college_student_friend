@@ -1,10 +1,10 @@
-<section class="py-5">
-  <div class="container px-4 px-lg-5 my-5">
+<section class="customer_page">
+  <div class="container px-4 px-5 my-5">
     <div class="row gx-4 gx-lg-5 align-items-center">
-      <div class="col-md-6">
-        <%= image_tag @customer.get_profile_image(700,600) %>
+      <div class="col-lg-6">
+        <%= image_tag @customer.get_profile_image(500,400) %>
       </div>
-      <div class="col-md-6">
+      <div class="col-lg-6">
         <h3 class="display-5 fw-bolder">
           <%= @customer.full_name_kana %>
         </h3>
