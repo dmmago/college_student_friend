@@ -27,7 +27,7 @@
     </div>
     <div class="form-group">
       <%= f.label :school_year, "学年" %>
-      <%= f.text_field :school_year, :placeholder =>"#{@customer.school_year}", class: "form-control" %>
+      <%= f.select :school_year, [['1年', '1年'], ['2年', '2年'], ['3年', '3年'], ['4年', '4年']],{}, { class: "form-control"} %>
     </div>
     <div class="form-group">
       <%= f.label :faculty, "学部" %>
