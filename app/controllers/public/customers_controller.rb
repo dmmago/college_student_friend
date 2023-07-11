@@ -9,6 +9,11 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
+    if @customer == current_customer
+      render "edit"
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -22,7 +27,7 @@ class Public::CustomersController < ApplicationController
     @customers = Customer.page(params[:page])
   end
   
-   def destroy
+  def destroy
     customer = Customer.find(params[:id])
     customer.destroy 
     flash[:notice] = "退会しました"
