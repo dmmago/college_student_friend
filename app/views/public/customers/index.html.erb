@@ -9,16 +9,15 @@
       </thead>
       <tbody>
       <% @customers.each do |customer| %>
-        <% if customer.is_deleted == false && customer.anonymity == false %>
           <tr>
             <td><%= customer.full_name %></td>
             <td><%= customer.faculty %></td>
             <td><%= customer.school_year %></td>
             <td><%= link_to "詳細", customer_path(customer) %></td>
           </tr>
-        <% end %>
       <% end %>
       </tbody>
     </table>
+    <%= paginate @customers %>
   </div>
 </div>

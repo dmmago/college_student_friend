@@ -24,7 +24,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def index
-    @customers = Customer.page(params[:page])
+    @customers = Customer.where(is_deleted: 'false', anonymity: 'false').page(params[:page])
   end
   
   def destroy
@@ -53,6 +53,6 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :school_year, :faculty, :introduction, :profile_image)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :school_year, :faculty, :introduction, :anonymity, :profile_image)
   end
 end

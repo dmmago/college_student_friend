@@ -38,6 +38,10 @@
       <%= f.text_area :introduction, :placeholder =>"#{@customer.introduction}", class: "form-control" %>
     </div>
     <div class="form-group">
+      <%= f.label :anonymity, "検索画面での表示" %>
+      <%= f.select :anonymity, [['表示', 'false'], ['非表示', 'true']],{}, { class: "form-control"} %>
+    </div>
+    <div class="form-group">
       <div>
       <%= f.label :profile_image, "プロフィール画像" %>
       </div>
