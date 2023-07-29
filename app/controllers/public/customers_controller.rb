@@ -33,6 +33,20 @@ class Public::CustomersController < ApplicationController
     flash[:notice] = "退会しました"
     redirect_to root_path 
   end
+  
+  def unsubscribe
+  end
+  
+  def withdraw
+    @customer = Customer.find(params[:id])
+    if @customer == current_customer
+      @customer.update(is_deleted: true)
+      reset_session
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+  end
 
 
 

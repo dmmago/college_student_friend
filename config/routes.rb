@@ -16,6 +16,8 @@ scope module: :public do
   root to: 'homes#top'
 
   resources :customers, only: [:index, :create, :show, :edit, :update, :destroy]
+  get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+  patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
 
   resources :friend_requests, only: [:create, :index]
 
