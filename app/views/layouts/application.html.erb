@@ -22,7 +22,11 @@
             <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark" %></li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "会員一覧", admin_customers_path, class: "nav-link text-dark" %>
+            </li>
             <li class="nav-item">
               <%= link_to "教室作成", new_admin_lecture_path, class: "nav-link text-dark" %>
             </li>

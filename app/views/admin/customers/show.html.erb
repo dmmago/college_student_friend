@@ -1,0 +1,32 @@
+<section class="customer_page">
+  <div class="container px-4 px-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="col-lg-6">
+        <%= image_tag @customer.get_profile_image(500,400) %>
+      </div>
+      <div class="col-lg-6">
+        <h3 class="display-5 fw-bolder">
+          <%= @customer.full_name_kana %>
+        </h3>
+        <h1 class="display-5 fw-bolder">
+          <%= @customer.full_name %>
+        </h1>
+        <p class="school_year">
+          <%= @customer.faculty %>
+          <%= @customer.school_year %>
+          
+        </p>
+        <p class="introduction">
+          <%= @customer.introduction %>
+        </p>
+        <div class="link">
+          <% if @customer.is_deleted == true %>
+            <%= link_to "会員を有効にする",  admin_customer_path, method: :patch, class: "btn btn-primary mx-2" %>
+          <% else %>
+            <%= link_to "退会させる", admin_customer_path, method: :patch, class: "btn btn-primary mx-2" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

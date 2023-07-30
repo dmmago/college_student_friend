@@ -4,7 +4,13 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    
+    if @customer.anonymity == false && @customer.is_deleted == false
+      render "show"
+    elsif @customer == current_customer
+      render "show"
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -26,17 +32,17 @@ class Public::CustomersController < ApplicationController
   def index
     @customers = Customer.where(is_deleted: 'false', anonymity: 'false').page(params[:page])
   end
-  
+
   def destroy
     customer = Customer.find(params[:id])
-    customer.destroy 
+    customer.destroy
     flash[:notice] = "退会しました"
-    redirect_to root_path 
+    redirect_to root_path
   end
-  
+
   def unsubscribe
   end
-  
+
   def withdraw
     @customer = Customer.find(params[:id])
     if @customer == current_customer

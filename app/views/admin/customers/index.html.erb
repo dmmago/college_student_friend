@@ -1,0 +1,25 @@
+<div class="container text-center">
+  <div class="py-5 px-4">
+    <table class="table ">
+      <thead>
+        <th>名前</th>
+        <th>学部</th>
+        <th>学年</th>
+        <th></th>
+        <th>会員情報</th>
+      </thead>
+      <tbody>
+      <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.full_name %></td>
+            <td><%= customer.faculty %></td>
+            <td><%= customer.school_year %></td>
+            <td><%= link_to "詳細", admin_customer_path(customer) %></td>
+            <td><%= customer.is_deleted  ? '退会済み' : '有効' %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate @customers %>
+  </div>
+</div>

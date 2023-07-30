@@ -31,6 +31,7 @@ end
     resources :lectures, only: [:index, :create, :destroy, :new] do
       resource :seats, only: [:create, :new]
   end
+    resources :customers, only: [:index, :show, :update]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
