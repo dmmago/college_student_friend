@@ -4,3 +4,6 @@ class FriendRequest < ApplicationRecord
   enum status: { approve: 0, unaccept: 1 }
 end
 #approve 承認　unaccept 無効
+
+
+  

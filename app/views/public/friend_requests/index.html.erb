@@ -3,11 +3,14 @@
       フレンド申請
     </h1>
     <% @friend_requests.each do |friend_request| %>
-    <div class="friend_name">
-    <%= link_to friend_request.from_customer.full_name, customer_path(friend_request.from_customer.id) %>
-    </div>
+        <div class="friend_name">
+        <% if friend_request.from_customer.is_deleted == false %>
+        <%= link_to friend_request.from_customer.full_name, customer_path(friend_request.from_customer.id) %>
+        <% end %>
+        </div>
     <% end %>
 </div>
+
 
 
 
