@@ -1,6 +1,5 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_customer!
-
   def create
     current_customer_chats = ChatRoom.where(customer_id: current_customer.id).map(&:chat_id)
     #ChatRoomから自分の情報をとる
@@ -19,9 +18,14 @@ class Public::ChatsController < ApplicationController
 
     @chat = Chat.find(params[:id])
     @chat_room = @chat.chat_rooms.where.not(customer_id: current_customer.id).first.customer
-    #相手の情報取得
+      #相手の情報取得
+      if @chat.chat_rooms.where.not(customer_id: @chat_room.id).first.customer == current_customer
+      #チャットルームをチャットIDと相手のIDでないほうを検索しログインユーザーでないならトップ画面へ
+        @chat_messages = ChatMessage.where(chat_id: @chat)
+      else
+        redirect_to root_path
+      end
 
-    @chat_messages = ChatMessage.where(chat_id: @chat)
 
   end
 
