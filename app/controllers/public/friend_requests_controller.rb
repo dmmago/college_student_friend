@@ -3,9 +3,6 @@ class Public::FriendRequestsController < ApplicationController
   def index
     @friend_requests = FriendRequest.where(to_customer_id: current_customer.id, status: 'approve')
     #ログインユーザへの友達申請のid取得
-    @a = FriendRequest.where(to_customer_id: current_customer.id, status: 'approve').pluck(:from_customer_id)
-    @b = FriendRequest.where(to_customer_id: @a, from_customer_id: current_customer.id, status: 'approve').map(&:to_customer)
-    
   end
   
     
