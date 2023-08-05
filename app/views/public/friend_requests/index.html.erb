@@ -9,3 +9,15 @@
   <% end %>
 </div>
 
+
+<div class="container text-center">
+  <h1 class="mb-5 pt-5">フレンド申請リスト</h1>
+  <% @friend_requests.each do |friend_request| %>
+    <% if !current_customer.active_friend_request.find_by(to_customer_id: friend_request.from_customer_id, status: 'approve') && friend_request.from_customer.is_deleted == false %>
+    <%# ログインユーザーのフレンドリクエストからeach.doの会員とstatusがapproveを確認　%>
+    <div class="friend_name">
+      <%= link_to friend_request.from_customer.full_name, customer_path(friend_request.from_customer.id) %>
+    </div>
+    <% end %>
+  <% end %>
+</div>

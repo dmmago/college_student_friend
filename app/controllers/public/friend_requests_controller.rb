@@ -1,17 +1,23 @@
 class Public::FriendRequestsController < ApplicationController
   before_action :authenticate_customer!
   def index
-    @friend_requests = FriendRequest.where(to_customer_id: current_customer.id, status: 'approve')#ログインユーザへの友達申請のid取得
-  
-   
+    @friend_requests = FriendRequest.where(to_customer_id: current_customer.id, status: 'approve')
+    #ログインユーザへの友達申請のid取得
+    @a = FriendRequest.where(to_customer_id: current_customer.id, status: 'approve').pluck(:from_customer_id)
+    @b = FriendRequest.where(to_customer_id: @a, from_customer_id: current_customer.id, status: 'approve').map(&:to_customer)
+    
   end
+  
+    
 
   def create
     friendrequest = current_customer.active_friend_request.find_by(to_customer_id: params[:customer_id])
+    #ログインユーザーのフレンドリクエストから送信した会員を取り出す
     if !friendrequest
+      #ないなら
         FriendRequest.create(to_customer_id: params[:customer_id], from_customer_id: current_customer.id, status: :approve)
     else
-      if friendrequest.approve?
+      if friendrequest.approve?#すでに許可なら不可に
          friendrequest.unaccept!
       else
          friendrequest.approve!
