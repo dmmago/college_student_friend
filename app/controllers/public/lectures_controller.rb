@@ -26,7 +26,7 @@ class Public::LecturesController < ApplicationController
   def update
     @seat = Seat.find(params[:seat_id])
     @seat.customer_id = nil
-    @seat.save!(validate: false)
+    @seat.save(validate: false)
     flash[:notice] = '座席情報を削除しました'
     redirect_back(fallback_location: root_url)
   end

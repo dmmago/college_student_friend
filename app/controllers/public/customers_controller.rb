@@ -33,12 +33,6 @@ class Public::CustomersController < ApplicationController
     @customers = Customer.where(is_deleted: 'false', anonymity: 'false').page(params[:page])
   end
 
-  def destroy
-    customer = Customer.find(params[:id])
-    customer.destroy
-    flash[:notice] = "退会しました"
-    redirect_to root_path
-  end
 
   def unsubscribe
   end
@@ -47,6 +41,8 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer == current_customer
       @customer.update(is_deleted: true)
+      @customer.seats.update_all(customer_id: nil)#退会処理とともに座席登録も空にする
+      flash[:notice] = "退会しました"
       reset_session
       redirect_to root_path
     else

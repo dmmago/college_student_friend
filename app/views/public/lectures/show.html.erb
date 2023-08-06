@@ -14,7 +14,7 @@
         <p class="small"><%= current_customer.full_name %></p>
         <%= link_to "削除", lecture_path(seat_id: seat.id), method: :patch, class: "small"%>
       <% else %>
-        <%= link_to seat.customer.full_name, customer_path(seat.customer_id), class: "small" %>
+        <%= link_to seat.customer.full_name, customer_path(seat.customer_id), class: "small text-success" %>
       <% end %>
       </div>
     <% end %>

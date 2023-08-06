@@ -11,6 +11,7 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.is_deleted == false
     @customer.update(is_deleted: true)
+    @customer.seats.update_all(customer_id: nil)#退会処理とともに座席登録も空にする
     redirect_to admin_customer_path(@customer)
     else
     @customer.update(is_deleted: false)
