@@ -1,2 +1,4 @@
-
-<%= link_to "退会する", withdraw_customer_path, method: :patch, "data-confirm" => "退会処理がされます。本当によろしいですか？", class: "btn btn-danger" %>
+<div class="container py-5 px-5 text-center">
+  <h3 class="fw-bolder">退会すると同じメールアドレスでの登録が不可能になります。</h3>
+  <%= link_to "退会する", withdraw_customer_path, method: :patch, "data-confirm" => "退会処理がされます。本当によろしいですか？", class: "btn btn-danger" %>
+ </div>
