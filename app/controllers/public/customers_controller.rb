@@ -6,7 +6,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.anonymity == false && @customer.is_deleted == false
       render "show"
-    elsif @customer == current_customer.i
+    elsif @customer == current_customer
       render "show"
     else
       redirect_to root_path
