@@ -3,7 +3,7 @@
     <h2 class="fw-bolder mb-5">フレンドリスト</h2>
   <% @friend_requests.each do |friend_request| %>
     <div class="friend_name">
-    <% if current_customer.active_friend_request.find_by(to_customer_id: friend_request.from_customer_id, status: 'approve') && friend_request.from_customer.is_deleted == false %>
+    <% if current_customer.active_friend_request.find_by(to_customer_id: friend_request.from_customer_id, status: 0) && friend_request.from_customer.is_deleted == false %>
       <%= link_to friend_request.from_customer.full_name, customer_path(friend_request.from_customer.id) %>
     <% end %>
     </div>
@@ -11,7 +11,7 @@
   <h2 class="fw-bolder mb-5">フレンド申請リスト</h2>
   <% @friend_requests.each do |friend_request| %>
   <div class="friend_name">
-    <% if !current_customer.active_friend_request.find_by(to_customer_id: friend_request.from_customer_id, status: 'approve') && friend_request.from_customer.is_deleted == false %>
+    <% if !current_customer.active_friend_request.find_by(to_customer_id: friend_request.from_customer_id, status: 0) && friend_request.from_customer.is_deleted == false %>
     <%# ログインユーザーのフレンドリクエストからeach.doの会員とstatusがapproveを確認　%>
       <%= link_to friend_request.from_customer.full_name, customer_path(friend_request.from_customer.id) %>
     <% end %>

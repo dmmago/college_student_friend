@@ -45,7 +45,7 @@ class Customer < ApplicationRecord
       return false
     end
     self.active_friend_request.find_by(to_customer_id: customer.id).approve?
-    
+
   end
 
 

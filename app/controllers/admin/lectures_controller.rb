@@ -2,7 +2,6 @@ class Admin::LecturesController < ApplicationController
   before_action :authenticate_admin!
   def new
     @lecture = Lecture.new
-    @seat = Seat.new
   end
 
 
@@ -23,7 +22,7 @@ class Admin::LecturesController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     lecture = Lecture.find(params[:id])
     lecture.destroy
