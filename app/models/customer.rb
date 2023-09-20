@@ -41,8 +41,9 @@ class Customer < ApplicationRecord
   end
 
   def requesting_customer?(customer)
-    if !self.active_friend_request || !self.active_friend_request.find_by(to_customer_id: customer.id)
+    if !self.active_friend_request.find_by(to_customer_id: customer.id)
       return false
+      #上記がないと下記のフレンドリクエスト許可を確認するメゾットがモデルがないため参照されずにエラーとなる
     end
     self.active_friend_request.find_by(to_customer_id: customer.id).approve?
 
